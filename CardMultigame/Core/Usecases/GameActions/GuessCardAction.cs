@@ -18,19 +18,7 @@ namespace Core.Usecases.GameActions
 
         public void ChangeGameState(GameState currentGameState, PlayedGameRules rules, string orderParams)
         {
-            Card candidate = new CreateCards().CreateSingle(orderParams);
-
-            CardDeck deck = QueryGameState.ExtractCardDeck(currentGameState);
-            Card actuallyDrawnCard = deck.DrawRandomCard();
-
-            ICardComparisonStrategy comparator = rules.CardComparator();
-
-            bool areTheSame = comparator.AreTheSame(candidate, actuallyDrawnCard);
-
-            if(areTheSame) currentGameState[_identifier] = true;
-            else currentGameState[_identifier] = false;
-
-            ModifyGameState.AddTurn(currentGameState);
+            throw new NotImplementedException("Implement this. T212, GuessingACard command");
         }
 
         public bool ShouldReactTo(string orderName)

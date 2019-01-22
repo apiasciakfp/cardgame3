@@ -26,7 +26,7 @@ namespace Core.Entities.Decks
             List<Card> cards = new List<Card>();
             foreach (var rank in ranks)
             {
-                foreach(var colour in colours)
+                foreach (var colour in colours)
                 {
                     string cardPrototype = rank + colour;
                     Card card = new CreateCards().CreateSingle(cardPrototype);
@@ -39,22 +39,7 @@ namespace Core.Entities.Decks
 
         public CardDeck Simple2ToAWith4Colours()
         {
-            List<string> ranks = new List<string>() { "2", "3", "4", "5", "6", "7", "8",
-                "9", "10", "J", "Q", "K", "A" };
-            List<string> colours = new List<string>() { "S", "H", "D", "C" };
-
-            List<Card> cards = new List<Card>();
-            foreach (var rank in ranks)
-            {
-                foreach (var colour in colours)
-                {
-                    string cardPrototype = rank + colour;
-                    Card card = new CreateCards().CreateSingle(cardPrototype);
-                    cards.Add(card);
-                }
-            }
-
-            return new CardDeck(_selectedCardSelector, cards);
+            throw new NotImplementedException("Implement this for T109 Different creation methods");
         }
 
         public CardDeck Empty()
@@ -62,13 +47,12 @@ namespace Core.Entities.Decks
             return new CardDeck(_selectedCardSelector, new List<Card>());
         }
 
-
         /// <summary>
         /// This is a setter method to change the default random generator
         /// </summary>
         public void SetCardSelector(ICardSelector selector)
         {
-            _selectedCardSelector = selector;
+            throw new NotImplementedException("Implement this for T113 Reconfigure selector");
         }
 
     }

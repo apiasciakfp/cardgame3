@@ -15,14 +15,7 @@ namespace Core.Usecases.GameConditions
     {
         public void CheckAndUpdate(GameState currentGameState)
         {
-            int currentTurn = QueryGameState.CurrentTurn(currentGameState);
-            int maxTurns = QueryGameState.MaximumTurns(currentGameState);
-
-            if (currentTurn >= maxTurns)
-            {
-                ModifyGameState.DeclareGameToBeLost(currentGameState);
-            }
-            
+            throw new NotImplementedException("Implement this for T208 WinCondition, LossCondition");
         }
     }
 }

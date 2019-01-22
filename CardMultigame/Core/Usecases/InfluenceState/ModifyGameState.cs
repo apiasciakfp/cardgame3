@@ -1,4 +1,5 @@
 ﻿using Core.Entities.GameStates;
+using System;
 
 namespace Core.Usecases.InfluenceState
 {
@@ -18,12 +19,12 @@ namespace Core.Usecases.InfluenceState
 
         public static void DeclareGameToBeLost(GameState currentGameState)
         {
-            currentGameState[GameStateKeys.IsGameLost] = true;
+            throw new NotImplementedException("Implement this for T207 ModifyTheGameState");
         }
 
         public static void DeclareGameToBeWon(GameState currentGameState)
         {
-            currentGameState[GameStateKeys.IsGameWon] = true;
+            throw new NotImplementedException("Implement this for T207 ModifyTheGameState");
         }
 
 

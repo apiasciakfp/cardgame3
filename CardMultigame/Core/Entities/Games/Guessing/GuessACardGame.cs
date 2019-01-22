@@ -5,6 +5,7 @@ using Core.Usecases.GameActions;
 using Core.Usecases.GameConditions;
 using Core.Entities.GameStates;
 using Core.Usecases.CardComparison;
+using System;
 
 namespace Core.Entities.Games
 {
@@ -17,17 +18,17 @@ namespace Core.Entities.Games
 
         public List<IGameAction> AvailableActions()
         {
-            return new List<IGameAction>() { new GuessCardAction() };
+            throw new NotImplementedException("Implement this for T209 GuessACardGame was a strategy!");
         }
 
         public List<IGameCondition> GameStopConditions()
         {
-            return new List<IGameCondition>() { new DidTurnsExpire() };
+            throw new NotImplementedException("Implement this for T209 GuessACardGame was a strategy!");
         }
 
         public List<IGameCondition> VictoryConditions()
         {
-            return new List<IGameCondition>() { new DidGuessACard() };
+            throw new NotImplementedException("Implement this for T209 GuessACardGame was a strategy!");
         }
 
         public GameState InitialGameState()
@@ -45,7 +46,7 @@ namespace Core.Entities.Games
 
         public ICardComparisonStrategy CardComparisonStrategy()
         {
-            return new StrictCardComparisonStrategy();
+            throw new NotImplementedException("Implement this for T108 Strategy for the future");
         }
     }
 }

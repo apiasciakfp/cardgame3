@@ -13,10 +13,7 @@ namespace Core.Usecases.GameActions
     {
         public void ChangeGameState(GameState currentGameState, PlayedGameRules gameRules, string orderParams)
         {
-            QueryGameState.ExtractCardDeck(currentGameState).DrawRandomCard();
-
-            if (QueryGameState.AmountOfCardsLeft(currentGameState) == 0)
-                currentGameState["Guess"] = true;
+            throw new NotImplementedException("Implement this for T201 and I guess change it in T205 too.");
         }
 
         public bool ShouldReactTo(string item1)

@@ -196,7 +196,7 @@ namespace TrainingTests
             // Commentary
             // ---
             // What happens if we make a mistake? What if we have a typo? Any typo?
-            // I would like to have a new Strategy returned. One
+            // I would like to have a new Strategy returned. One which ALWAYS FAILS.
             // ---
 
             // Given - same scenario

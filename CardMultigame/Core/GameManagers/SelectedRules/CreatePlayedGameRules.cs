@@ -28,14 +28,12 @@ namespace Core.GameManagers.SelectedRules
         public PlayedGameRules WithModifications(string gameName, List<IGameAction> actions, List<IGameCondition> victories, 
             List<IGameCondition> gameStops, ICardComparisonStrategy compareCards)
         {
-            var selectedName = _defaultGameName;
+            // You have to make changes to this method: T213 Factory + NullObject'
+
             var selectedActions = _defaultActions;
             var selectedVictories = _defaultVictories;
             var selectedGameStops = _defaultGameStops;
             var selectedCardComparators = _defaultCardComparators;
-
-            if (gameName != null)
-                selectedName = gameName;
 
             if (actions != null)
                 selectedActions = actions;
@@ -49,7 +47,7 @@ namespace Core.GameManagers.SelectedRules
             if (compareCards != null)
                 selectedCardComparators = compareCards;
 
-            return new PlayedGameRules(selectedName, selectedActions, selectedVictories, selectedGameStops, selectedCardComparators);
+            return new PlayedGameRules(string.Empty, selectedActions, selectedVictories, selectedGameStops, selectedCardComparators);
 
         }
     }
