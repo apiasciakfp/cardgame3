@@ -1,0 +1,37 @@
+---
+
+Cards:
+	Values:
+		2-10 : normal cards
+		J : Jack / Valet
+		Q : Queen / Dame
+		K : King / Roi
+		A : Ace
+	Colours:
+		S : Spades, Black colour (pique)
+		H : Heart, Red colour (coeur)
+		D : Diamond, Red colour (carreaux)
+		C : Clubs, Black Colour (trefles)
+	Notation:
+		2D : 2 Diamonds
+		JH : Jack of Hearts
+		...
+
+---
+
+Parsers:
+	Separators:
+		',' : type 1
+		';' : type 2
+		'-' : type 3
+		They can be mixed and matched
+		Examples:
+			Play GuessACard; SetDeck JH, QH, AH; StartGame; Guess AH
+				is a set of 4 commands:
+					1: 'Play' command with 'GuessACard' parameter is ran
+					2: 'SetDeck' command with 'JH, QH, AH' parameter is ran
+						2.1 where subparser will split it into 'JH', 'QH', 'AH'
+						2.2 and SetDeck will take care of those parameters
+					3: 'StartGame' command will start an instance of the game
+					4: 'Guess' command will have 'AH' as parameter
+---
