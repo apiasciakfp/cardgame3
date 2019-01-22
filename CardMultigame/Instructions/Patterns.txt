@@ -1,0 +1,10 @@
+﻿Batch100:
+	Strategy
+	FactoryMethod
+	NullObject
+Batch200:
+	Command
+	FactoryMethod
+	Chain of Responsibility
+	EncapsulatedContext
+	Builder
