@@ -13,7 +13,7 @@ namespace Core.Entities.Games
     {
         public CardDeck CardDeck()
         {
-            return new CreateCardDeck().Simple9ToAWith4Colours();
+            return new CardDeckFactory().Simple9ToAWith4Colours();
         }
 
         public List<IGameAction> AvailableActions()

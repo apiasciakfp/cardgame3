@@ -23,12 +23,12 @@ namespace Core.Containers.GameRules
 
         public PlayedGameRules ConstructRuleset()
         {
-            return new CreatePlayedGameRules().WithModifications(_gameName, _actions, _victories, _gameStops, _compareCards);
+            return new PlayedGameRulesFactory().WithModifications(_gameName, _actions, _victories, _gameStops, _compareCards);
         }
         
         public GameState ConstructGameState()
         {
-            return new CreateGameState().WithModifications(_initialGameState, _deck);
+            return new GameStateFactory().WithModifications(_initialGameState, _deck);
         }
 
 

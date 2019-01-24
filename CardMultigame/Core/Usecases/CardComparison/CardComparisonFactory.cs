@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Usecases.CardComparison
 {
-    public class CreateCardComparisonStrategy
+    public class CardComparisonFactory
     {
         public ICardComparisonStrategy Create(string selector)
         {

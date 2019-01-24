@@ -143,7 +143,7 @@ namespace TrainingTests
             Card card2 = new Card("A", "H");
 
             //...with a twist:
-            ICardComparisonStrategy strategy = new CreateCardComparisonStrategy().Create("colour");
+            ICardComparisonStrategy strategy = new CardComparisonFactory().Create("colour");
 
             // When
             bool areTheSame_Strict = strategy.AreTheSame(card1, card2);
@@ -169,22 +169,22 @@ namespace TrainingTests
             ICardComparisonStrategy strategy;
 
             // Strict
-            strategy = new CreateCardComparisonStrategy().Create("strict");
+            strategy = new CardComparisonFactory().Create("strict");
             bool areTheSame_Strict = strategy.AreTheSame(card1, card2);
             Assert.IsFalse(areTheSame_Strict);
 
             // Colour
-            strategy = new CreateCardComparisonStrategy().Create("colour");
+            strategy = new CardComparisonFactory().Create("colour");
             bool areTheSame_Colour = strategy.AreTheSame(card1, card2);
             Assert.IsTrue(areTheSame_Colour);
 
             // Rank
-            strategy = new CreateCardComparisonStrategy().Create("rank");
+            strategy = new CardComparisonFactory().Create("rank");
             bool areTheSame_Rank = strategy.AreTheSame(card1, card2);
             Assert.IsFalse(areTheSame_Rank);
 
             // BlackRed
-            strategy = new CreateCardComparisonStrategy().Create("blackred");
+            strategy = new CardComparisonFactory().Create("blackred");
             bool areTheSame_BlackRed = strategy.AreTheSame(card1, card2);
             Assert.IsTrue(areTheSame_BlackRed);
 
@@ -206,11 +206,11 @@ namespace TrainingTests
             // When
             List<ICardComparisonStrategy> strategies = new List<ICardComparisonStrategy>()
             {
-                new CreateCardComparisonStrategy().Create("THIS IS A TYPO!"),
-                new CreateCardComparisonStrategy().Create(""),
-                new CreateCardComparisonStrategy().Create("al/fdkafklfhflsdhflhffhfh"),
-                new CreateCardComparisonStrategy().Create("f;lff;kklfs;df"),
-                new CreateCardComparisonStrategy().Create("don't else-if those cases please...")
+                new CardComparisonFactory().Create("THIS IS A TYPO!"),
+                new CardComparisonFactory().Create(""),
+                new CardComparisonFactory().Create("al/fdkafklfhflsdhflhffhfh"),
+                new CardComparisonFactory().Create("f;lff;kklfs;df"),
+                new CardComparisonFactory().Create("don't else-if those cases please...")
             };
 
             // When, Then
@@ -268,7 +268,7 @@ namespace TrainingTests
             Card highCard = new Card("K", "H");
 
             // When
-            CardDeck deck = new CreateCardDeck().Simple2ToAWith4Colours();
+            CardDeck deck = new CardDeckFactory().Simple2ToAWith4Colours();
 
             // Then
             List<Card> allCards = deck.AllCards();
@@ -398,7 +398,7 @@ namespace TrainingTests
 
             // Given, Expected
             AlwaysFirstSelector selector = new AlwaysFirstSelector();
-            List<Card> expectedCards = new CreateCards().CreateCollection("9H, 10H, 9C, 10C, AD");
+            List<Card> expectedCards = new CardFactory().CreateCollection("9H, 10H, 9C, 10C, AD");
 
             List<Card> copiedList = new List<Card>(expectedCards);
             CardDeck deck = new CardDeck(selector, copiedList);
@@ -430,7 +430,7 @@ namespace TrainingTests
 
             // Given, Expected
             AlwaysLastSelector selector = new AlwaysLastSelector();
-            List<Card> expectedCards = new CreateCards().CreateCollection("9H, 10H, 9C, 10C, AD");
+            List<Card> expectedCards = new CardFactory().CreateCollection("9H, 10H, 9C, 10C, AD");
 
             List<Card> copiedList = new List<Card>(expectedCards);
             CardDeck deck = new CardDeck(selector, copiedList);
@@ -466,10 +466,10 @@ namespace TrainingTests
             string inputCardSigils = "JS, QH, KD, AC";
 
             // Expected
-            List<Card> expectedCards = new CreateCards().CreateCollection(inputCardSigils);
+            List<Card> expectedCards = new CardFactory().CreateCollection(inputCardSigils);
 
             // Given: look at this CLOSELY
-            CreateCardDeck creator = new CreateCardDeck();
+            CardDeckFactory creator = new CardDeckFactory();
 
             creator.SetCardSelector(new AlwaysFirstSelector());
             CardDeck deckWithAlwaysFirst = creator.FromGivenCards(inputCardSigils);

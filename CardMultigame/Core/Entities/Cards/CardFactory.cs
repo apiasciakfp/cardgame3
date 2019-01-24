@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Entities.Cards
 {
-    public class CreateCards
+    public class CardFactory
     {
         public virtual List<Card> CreateCollection(string cardStrings)
         {

@@ -14,7 +14,7 @@ namespace Core.Interface
 
         public UiLogicDispatcher()
         {
-            _gameManager = new CreateGameManager().Empty();
+            _gameManager = new GameManagerFactory().Empty();
         }
 
         public void DoStuff(string orders)
@@ -24,7 +24,7 @@ namespace Core.Interface
 
         public void SetupGame(string orders)
         {
-            _gameManager = new CreateGameManager().DefaultsWithOrders(orders);
+            _gameManager = new GameManagerFactory().DefaultsWithOrders(orders);
         }
 
         public string DisplayCurrentState()

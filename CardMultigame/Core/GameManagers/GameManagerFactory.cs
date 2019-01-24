@@ -13,13 +13,13 @@ using System.Threading.Tasks;
 
 namespace Core.Interfaces.GameManagers
 {
-    public class CreateGameManager
+    public class GameManagerFactory
     {
         public GameManager DefaultsWithOrders(string orderString)
         {
             List<Tuple<string, string>> orders = new SelectedParser().ProperlyParse(orderString);
 
-            GameManagerInternalsBuilder builder = new CreateGameStructure().BuildRulesAndInitialState(orders);
+            GameManagerInternalsBuilder builder = new GameStructureFactory().BuildRulesAndInitialState(orders);
 
             PlayedGameRules rules = builder.ConstructRuleset();
             GameState initialState = builder.ConstructGameState();
@@ -29,8 +29,8 @@ namespace Core.Interfaces.GameManagers
 
         public GameManager Empty()
         {
-            GameState initialState = new CreateGameState().Default();
-            PlayedGameRules rules = new CreatePlayedGameRules().Empty();
+            GameState initialState = new GameStateFactory().Default();
+            PlayedGameRules rules = new PlayedGameRulesFactory().Empty();
 
             return new GameManager(initialState, rules);
         }

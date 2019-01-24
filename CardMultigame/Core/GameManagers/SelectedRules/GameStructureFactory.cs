@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Core.Containers.GameRules
 {
-    public class CreateGameStructure
+    public class GameStructureFactory
     {
         List<ICreateGameRulesCommand> _commands; 
 
-        public CreateGameStructure()
+        public GameStructureFactory()
         {
             _commands = RegisterAvailableCreationCommands();
         }

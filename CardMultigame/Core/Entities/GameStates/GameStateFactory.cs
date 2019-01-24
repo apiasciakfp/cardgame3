@@ -3,7 +3,7 @@ using Core.Entities.Decks;
 
 namespace Core.Entities.GameStates
 {
-    public class CreateGameState
+    public class GameStateFactory
     {
         public GameState WithModifications(GameState stateModifier = null, CardDeck deck = null)
         {
@@ -30,7 +30,7 @@ namespace Core.Entities.GameStates
         public GameState DefaultsWithFullDeck()
         {
             GameState constructedState = Default();
-            constructedState[GameStateKeys.CardDeck] = new CreateCardDeck().Simple2ToAWith4Colours();
+            constructedState[GameStateKeys.CardDeck] = new CardDeckFactory().Simple2ToAWith4Colours();
             return constructedState;
         }
 
@@ -38,7 +38,7 @@ namespace Core.Entities.GameStates
         {
             return new GameState()
             {
-                { GameStateKeys.CardDeck, new CreateCardDeck().Empty()},
+                { GameStateKeys.CardDeck, new CardDeckFactory().Empty()},
                 { GameStateKeys.CurrentTurn, 0 },
                 { GameStateKeys.MaxTurns, 0 },
                 { GameStateKeys.IsGameLost, false },
@@ -58,7 +58,7 @@ namespace Core.Entities.GameStates
         private static CardDeck Sanitize(CardDeck deck)
         {
             if (deck == null)
-                return new CreateCardDeck().Empty();
+                return new CardDeckFactory().Empty();
             else
                 return deck;
         }

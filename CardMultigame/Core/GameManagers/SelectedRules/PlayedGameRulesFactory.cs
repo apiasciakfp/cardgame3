@@ -10,13 +10,13 @@ using Core.Usecases.CardComparison;
 
 namespace Core.GameManagers.SelectedRules
 {
-    public class CreatePlayedGameRules
+    public class PlayedGameRulesFactory
     {
         private string _defaultGameName = "No game selected";
         private List<IGameAction> _defaultActions = new List<IGameAction>();
         private List<IGameCondition> _defaultVictories = new List<IGameCondition>();
         private List<IGameCondition> _defaultGameStops = new List<IGameCondition>();
-        private ICardComparisonStrategy _defaultCardComparators = new CreateCardComparisonStrategy().None();
+        private ICardComparisonStrategy _defaultCardComparators = new CardComparisonFactory().None();
 
 
         public PlayedGameRules Empty()

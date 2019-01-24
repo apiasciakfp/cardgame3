@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.Usecases.GameActions
 {
-    public class CreateGameActions
+    public class GameActionsFactory
     {
         public List<IGameAction> HavingOrders(string actionsToPerform)
         {

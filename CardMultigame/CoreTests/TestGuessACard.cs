@@ -26,7 +26,7 @@ namespace CoreCasinoTests
             string orders = "Play GuessACard; SetDeck " + cardsInDeck + "; SetMaxTurns 3; " +
                 "Guess " + cardOutsideDeck + "; Guess " + cardOutsideDeck + "; Guess " + cardOutsideDeck;
 
-            GameManager gm = new CreateGameManager().DefaultsWithOrders(orders);
+            GameManager gm = new GameManagerFactory().DefaultsWithOrders(orders);
 
             // When
             gm.ExecuteOrders(orders);
@@ -52,7 +52,7 @@ namespace CoreCasinoTests
             string orders = "Play GuessACard, SetDeck " + cardsInDeck  + ", SetMaxTurns 3, " + 
                 "Guess " + cardOutsideDeck + ", Guess " + cardOutsideDeck + ", Guess " + cardOutsideDeck;
 
-            GameManager gm = new CreateGameManager().DefaultsWithOrders(orders);
+            GameManager gm = new GameManagerFactory().DefaultsWithOrders(orders);
 
             // When
             gm.ExecuteOrders(orders);
@@ -78,7 +78,7 @@ namespace CoreCasinoTests
             string orders = "Play GuessACard; SetDeck " + cardsInDeck + "; SetMaxTurns 3; " +
                 "Guess " + cardInsideDeck + "; Guess " + cardInsideDeck + "; Guess " + cardInsideDeck;
 
-            GameManager gm = new CreateGameManager().DefaultsWithOrders(orders);
+            GameManager gm = new GameManagerFactory().DefaultsWithOrders(orders);
 
             // When
             gm.ExecuteOrders(orders);
@@ -103,7 +103,7 @@ namespace CoreCasinoTests
             string orders = "Play GuessACard; SetDeck " + cardsInDeck + "; GameVariant RedBlack; " +
                 "Guess " + cardOutsideDeck + "; Guess " + cardOutsideDeck + "; Guess " + cardInsideDeck;
 
-            GameManager gm = new CreateGameManager().DefaultsWithOrders(orders);
+            GameManager gm = new GameManagerFactory().DefaultsWithOrders(orders);
 
             // When
             gm.ExecuteOrders(orders);

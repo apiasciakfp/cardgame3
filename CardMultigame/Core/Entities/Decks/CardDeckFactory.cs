@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Core.Entities.Decks
 {
-    public class CreateCardDeck
+    public class CardDeckFactory
     {
         private ICardSelector _selectedCardSelector = new RandomCardSelector();
 
         public CardDeck FromGivenCards(string cardsInDeck)
         {
-            List<Card> cards = new CreateCards().CreateCollection(cardsInDeck);
+            List<Card> cards = new CardFactory().CreateCollection(cardsInDeck);
             return new CardDeck(_selectedCardSelector, cards);
         }
 
@@ -29,7 +29,7 @@ namespace Core.Entities.Decks
                 foreach (var colour in colours)
                 {
                     string cardPrototype = rank + colour;
-                    Card card = new CreateCards().CreateSingle(cardPrototype);
+                    Card card = new CardFactory().CreateSingle(cardPrototype);
                     cards.Add(card);
                 }
             }

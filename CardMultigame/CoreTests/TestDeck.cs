@@ -21,8 +21,8 @@ namespace CoreCasinoTests.Entities
             var separator = ",";
             string cardsInDeck = string.Join(separator, cardSigils);
 
-            List<Card> cards = new CreateCards().CreateCollection(cardsInDeck);
-            CardDeck deck = new CreateCardDeck().FromGivenCards(cardsInDeck);
+            List<Card> cards = new CardFactory().CreateCollection(cardsInDeck);
+            CardDeck deck = new CardDeckFactory().FromGivenCards(cardsInDeck);
 
             // Expecting 
             int lengthInDeck = 0;
@@ -52,7 +52,7 @@ namespace CoreCasinoTests.Entities
             int cardCountExpected = 24;
 
             // When
-            CardDeck deck = new CreateCardDeck().Simple9ToAWith4Colours();
+            CardDeck deck = new CardDeckFactory().Simple9ToAWith4Colours();
 
             // Then
             List<Card> cardsReceived = deck.AllCards();
@@ -69,10 +69,10 @@ namespace CoreCasinoTests.Entities
             string cardsInDeck = string.Join(separator, cards);
 
             // Expecting 
-            List<Card> cardsExpected = new CreateCards().CreateCollection(cardsInDeck);
+            List<Card> cardsExpected = new CardFactory().CreateCollection(cardsInDeck);
 
             // When
-            CardDeck deck = new CreateCardDeck().FromGivenCards(cardsInDeck);
+            CardDeck deck = new CardDeckFactory().FromGivenCards(cardsInDeck);
 
             // Then
             List<Card> cardsReceived = deck.AllCards();

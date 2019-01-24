@@ -15,7 +15,7 @@ namespace Core.Containers.GameRules.CreationCommands
 
         public void ChangeGameRuleset(GameManagerInternalsBuilder builder, string parameters)
         {
-            CardDeck deck = new CreateCardDeck().FromGivenCards(parameters);
+            CardDeck deck = new CardDeckFactory().FromGivenCards(parameters);
             builder.SetDeck(deck);
         }
 

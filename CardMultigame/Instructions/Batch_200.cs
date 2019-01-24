@@ -39,15 +39,15 @@ namespace TrainingTests
 
             // Tutorial: how to extract the CardDeck from the GameState
                 // Having the GameState:
-            GameState tutorialState = new CreateGameState().DefaultsWithFullDeck();
+            GameState tutorialState = new GameStateFactory().DefaultsWithFullDeck();
                 // We can extract CardDeck and draw a random card:
             CardDeck tutorialDeck = QueryGameState.ExtractCardDeck(tutorialState);
             tutorialDeck.DrawRandomCard();
             // End of tutorial.
 
             // Given
-            CardDeck deck = new CreateCardDeck().FromGivenCards("2H, 3H, 4H");
-            GameState gameState = new CreateGameState().DefaultsPlusDeck(deck);
+            CardDeck deck = new CardDeckFactory().FromGivenCards("2H, 3H, 4H");
+            GameState gameState = new GameStateFactory().DefaultsPlusDeck(deck);
 
             // Expected:
             Assert.IsTrue(QueryGameState.AmountOfCardsLeft(gameState) == 3);
@@ -74,8 +74,8 @@ namespace TrainingTests
             // ---
 
             // Given
-            CardDeck deck = new CreateCardDeck().FromGivenCards("2H, 3H, 4H");
-            GameState gameState = new CreateGameState().DefaultsPlusDeck(deck);
+            CardDeck deck = new CardDeckFactory().FromGivenCards("2H, 3H, 4H");
+            GameState gameState = new GameStateFactory().DefaultsPlusDeck(deck);
 
             List<IGameAction> actions = new List<IGameAction>()
             {
@@ -128,8 +128,8 @@ namespace TrainingTests
             // ---
 
             // Given
-            CardDeck deck = new CreateCardDeck().FromGivenCards("2H, 3H, 4H");
-            GameState gameState = new CreateGameState().DefaultsPlusDeck(deck);
+            CardDeck deck = new CardDeckFactory().FromGivenCards("2H, 3H, 4H");
+            GameState gameState = new GameStateFactory().DefaultsPlusDeck(deck);
 
             List<IGameAction> actions = new List<IGameAction>()
             {
@@ -167,12 +167,12 @@ namespace TrainingTests
             // ---
 
             // Given
-            CardDeck deck = new CreateCardDeck().FromGivenCards("2H, 3H, 4H");
-            GameState gameState = new CreateGameState().DefaultsPlusDeck(deck);
+            CardDeck deck = new CardDeckFactory().FromGivenCards("2H, 3H, 4H");
+            GameState gameState = new GameStateFactory().DefaultsPlusDeck(deck);
 
             string actionsToPerform = "drawSingleCard, drawSingleCard, drawSingleCard, addQH, addQH, " +
                 "add10cOrDraw, add10cOrDraw";
-            List<IGameAction> actions = new CreateGameActions().HavingOrders(actionsToPerform);
+            List<IGameAction> actions = new GameActionsFactory().HavingOrders(actionsToPerform);
 
             // Expected:
             Assert.IsTrue(QueryGameState.AmountOfCardsLeft(gameState) == 3);
@@ -206,7 +206,7 @@ namespace TrainingTests
             // ---
 
             // Tutorial
-            GameState tutorialState = new CreateGameState().Default();
+            GameState tutorialState = new GameStateFactory().Default();
                 // The key 'SpecificKey' does not exist...
             Assert.IsTrue(tutorialState["SpecificKey"] == null);
                 // ...thus we insert it in...
@@ -215,11 +215,11 @@ namespace TrainingTests
             Assert.IsTrue(tutorialState["SpecificKey"] as string == "Capybara");
 
             // Given
-            CardDeck deck = new CreateCardDeck().FromGivenCards("2H, 3H, 4H");
-            GameState gameState = new CreateGameState().DefaultsPlusDeck(deck);
+            CardDeck deck = new CardDeckFactory().FromGivenCards("2H, 3H, 4H");
+            GameState gameState = new GameStateFactory().DefaultsPlusDeck(deck);
 
             string actionsToPerform = "drawSingleCard, drawSingleCard, drawSingleCard";
-            List<IGameAction> actions = new CreateGameActions().HavingOrders(actionsToPerform);
+            List<IGameAction> actions = new GameActionsFactory().HavingOrders(actionsToPerform);
 
             // Expected:
             Assert.IsTrue(QueryGameState.AmountOfCardsLeft(gameState) == 3);
@@ -254,7 +254,7 @@ namespace TrainingTests
             // ---
 
             // Given
-            GameState gameState = new CreateGameState().Default();
+            GameState gameState = new GameStateFactory().Default();
             gameState[GameStateKeys.IsGameWon] = false;
             gameState[GameStateKeys.IsGameLost] = false;
 
@@ -280,7 +280,7 @@ namespace TrainingTests
             // ---
 
             // Given
-            GameState gameState = new CreateGameState().Default();
+            GameState gameState = new GameStateFactory().Default();
             gameState[GameStateKeys.IsGameWon] = false;
             gameState[GameStateKeys.IsGameLost] = false;
 
@@ -326,10 +326,10 @@ namespace TrainingTests
             // ---
 
             // Given
-            GameState gameState = new CreateGameState().DefaultsWithFullDeck();
+            GameState gameState = new GameStateFactory().DefaultsWithFullDeck();
 
             string actionsToPerform = "drawSingleCard, drawSingleCard";
-            List<IGameAction> actions = new CreateGameActions().HavingOrders(actionsToPerform);
+            List<IGameAction> actions = new GameActionsFactory().HavingOrders(actionsToPerform);
 
             List<IGameCondition> conditions = new List<IGameCondition>()
             {
@@ -533,7 +533,7 @@ namespace TrainingTests
             // ---
 
             // Given 
-            PlayedGameRules referenceRules = new CreatePlayedGameRules().Empty();
+            PlayedGameRules referenceRules = new PlayedGameRulesFactory().Empty();
 
             // Knowing that
             Assert.IsTrue(referenceRules.GameActions().Count() == 0);
@@ -545,7 +545,7 @@ namespace TrainingTests
             string gameName = "Random game";
 
             // When
-            PlayedGameRules actualRules = new CreatePlayedGameRules().WithModifications(gameName, null, null, null, null);
+            PlayedGameRules actualRules = new PlayedGameRulesFactory().WithModifications(gameName, null, null, null, null);
 
             // Then
             Assert.IsTrue(actualRules.GameName() == gameName);
@@ -559,7 +559,7 @@ namespace TrainingTests
             var victories = new List<IGameCondition>() { new DidGuessACard() };
 
             // When
-            actualRules = new CreatePlayedGameRules().WithModifications(null, actions, victories, null, null);
+            actualRules = new PlayedGameRulesFactory().WithModifications(null, actions, victories, null, null);
 
             // Then
             Assert.IsTrue(actualRules.GameName() == referenceRules.GameName());
