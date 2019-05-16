@@ -1,0 +1,130 @@
+@startuml
+
+title Card Multigame, C4 model, C3/C4 - Components/Classes\n180801
+
+'PlantUML file.
+
+' =================
+' Graphics:
+' =================
+
+skinparam component {
+    backgroundColor<<person>> Cyan
+    backgroundColor<<software system>> Gold
+    backgroundColor<<managed tool>> BurlyWood
+    backgroundColor<<component>> LightGreen
+    backgroundColor<<category>> Silver
+    backgroundColor<<class>> Yellow
+}
+
+' =================
+'Actors:
+' =================
+
+component player <<person>> [
+    **Casino Meow Meow Player**
+    ---
+    A person willing to play one
+    of existing Casino games.
+]
+
+
+' =================
+' System:
+' =================
+
+package "CasinoMeowMeow: highly mutable card game (chain of comands)"{
+
+    component ui <<component>> [
+        **User Interface**
+        ---
+        Component: C# 3.5 / WinForms
+        ---
+        CasinoMeowMeow project, Form1.cs
+        Connected to CasinoCore::Interface, 
+        namely to UiLogicMediator.
+    ]
+
+    component creategamemanager <<class>> [
+        **CreateGameManager**
+        ---
+        Component: plain C# 3.5, Factory
+        ---
+        Uses a Builder to construct initial game state
+        and game rules, uses a DefaultObject (NullObject)
+        and uses parsers to work with string of orders.
+    ]
+
+    component gamemanager <<class>> [
+        **GameManager**
+        ---
+        Component: plain C# 3.5, Chain of Responsibility
+        ---
+        Main game loop.
+        Container for GameState and GameRules.
+        Executor of Chain of Responsibility testing
+        both the Actions To Perform and Win/Lose Conditions.
+        Contains parsers to tokenize and understand orderstring.
+    ]
+
+    component commands <<component>> [
+        **GameActions and VictoryConditions**
+        --
+        Component: plain C# 3.5, Command
+        --
+        example: GuessCardAction, DidGuessACard.
+        GameManager iterates over those to execute
+        game ("business") logic.
+    ]
+
+    component staterules <<component>> [
+        **GameState and GameRules**
+        --
+        Component: plain C# 3.5, EncapsulatedContext
+        --
+        GameState is dynamic EncapsulatedContext, 
+        GameRules is POCO EncapsulatedContext.
+        GameManager uses those to reference preset
+        rules and oversee the game state regardless
+        the selected game.
+    ]
+
+    component entities <<component>> [
+        **Core Domain**
+        --
+        Component: plain C# 3.5
+        --
+        Used as the 'passive classes' by
+        GameManager and Commands. They
+        represent the domain objects of
+        the CasinoMeowMeow.
+    ]
+
+    component strategies <<category>> [
+        **Strategies**
+        --
+        Component: plain C# 3.5, Strategy
+        --
+        Passive classes configuring things:
+        parsers, GameManager, Commands,
+        GameRules. Too many of those to 
+        connect using lines.
+    ]
+
+    ui -down-> gamemanager : passes a string with orders\n from input TextBox from UI
+    ui -down-> creategamemanager : build it and set it up\n with CreateGameManager\n on game setup\n passes a string of orders
+    creategamemanager -down-> gamemanager : build it and set it up
+    gamemanager -down-> commands : passes a relevant\n subset of order string
+    gamemanager -down-> staterules : passes them to GameActions / Conditions.
+    gamemanager -left-> entities : uses GameState \nand selected Game
+    commands -up-> entities : uses CardDeck, Cards \n and GameState \nvia GameManager
+}
+
+' =================
+' Communication outside system:
+' =================
+
+player --> ui : either setup the game\n or play the game
+
+
+@enduml
