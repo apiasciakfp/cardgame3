@@ -105,8 +105,8 @@ namespace TrainingTests
             {
                 Card card = retrievedDeck.DrawLastAddedCard();
 
-                Assert.IsTrue(card.Rank() == "Q");
-                Assert.IsTrue(card.Colour() == "H");
+                Assert.IsTrue(card.Rank== "Q");
+                Assert.IsTrue(card.Colour== "H");
             }
         }
 
