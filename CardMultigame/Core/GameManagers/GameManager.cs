@@ -30,7 +30,7 @@ namespace Core.Interfaces.GameManagers
             {
                 if (QueryGameState.IsGameFinished(_currentGameState)) return;
 
-                foreach (IGameAction gameAction in _gameRules.GameActions())
+                foreach (IGameAction gameAction in _gameRules.GameActions)
                 {
                     if (gameAction.ShouldReactTo(order.Item1))
                     {
