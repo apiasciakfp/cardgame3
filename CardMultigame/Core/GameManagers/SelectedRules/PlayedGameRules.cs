@@ -36,10 +36,10 @@ namespace Core.Containers.GameRules
 
         // Usually those three would remain private.
         // But tests for patterns kind of need it.
-        public List<IGameAction> GameActions() { return _actions; }
-        public List<IGameCondition> VictoryConditions() { return _victoryConditions; }
-        public List<IGameCondition> GameStopConditions() { return _gameStopConditions; }
-        public string GameName() { return _gameName; }
+        public List<IGameAction> GameActions => _actions;
+        public List<IGameCondition> VictoryConditions => _victoryConditions; 
+        public List<IGameCondition> GameStopConditions => _gameStopConditions;
+        public string GameName => _gameName;
 
         public void CheckVictoryConditions(GameState currentGameState)
         {

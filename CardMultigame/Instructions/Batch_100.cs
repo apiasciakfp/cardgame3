@@ -414,8 +414,8 @@ namespace TrainingTests
             // Then
             for(int i=0; i<5; i++)
             {
-                Assert.IsTrue(expectedCards[i].Colour() == actualCards[i].Colour());
-                Assert.IsTrue(expectedCards[i].Rank() == actualCards[i].Rank());
+                Assert.IsTrue(expectedCards[i].Colour== actualCards[i].Colour);
+                Assert.IsTrue(expectedCards[i].Rank== actualCards[i].Rank);
             }
             
         }
@@ -446,8 +446,8 @@ namespace TrainingTests
             // Then
             for (int i = 0; i < 5; i++)
             {
-                Assert.IsTrue(expectedCards[4-i].Colour() == actualCards[i].Colour());
-                Assert.IsTrue(expectedCards[4-i].Rank() == actualCards[i].Rank());
+                Assert.IsTrue(expectedCards[4-i].Colour== actualCards[i].Colour);
+                Assert.IsTrue(expectedCards[4-i].Rank== actualCards[i].Rank);
             }
 
         }
@@ -485,8 +485,8 @@ namespace TrainingTests
             // Then
             for (int i = 0; i < 4; i++)
             {
-                Assert.IsTrue(expectedCards[i].Colour() == actualFirstCards[i].Colour());
-                Assert.IsTrue(expectedCards[i].Rank() == actualFirstCards[i].Rank());
+                Assert.IsTrue(expectedCards[i].Colour== actualFirstCards[i].Colour);
+                Assert.IsTrue(expectedCards[i].Rank== actualFirstCards[i].Rank);
             }
 
             // Given again
@@ -504,8 +504,8 @@ namespace TrainingTests
             // Then
             for (int i = 0; i < 4; i++)
             {
-                Assert.IsTrue(expectedCards[3-i].Colour() == actualLastCards[i].Colour());
-                Assert.IsTrue(expectedCards[3-i].Rank() == actualLastCards[i].Rank());
+                Assert.IsTrue(expectedCards[3-i].Colour== actualLastCards[i].Colour);
+                Assert.IsTrue(expectedCards[3-i].Rank== actualLastCards[i].Rank);
             }
         }
 

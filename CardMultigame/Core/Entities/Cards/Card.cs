@@ -17,7 +17,13 @@ namespace Core.Entities.Cards
             this._colour = colour;
         }
 
-        public string Rank() => _rank;
-        public string Colour() => _colour;
+        public string Rank => _rank;
+        public string Colour => _colour;
+
+        public override string ToString()
+        {
+            return $"r: {Rank} c: {Colour}";
+        }
+
     }
 }
