@@ -105,8 +105,8 @@ namespace TrainingTests
             {
                 Card card = retrievedDeck.DrawLastAddedCard();
 
-                Assert.IsTrue(card.Rank() == "Q");
-                Assert.IsTrue(card.Colour() == "H");
+                Assert.IsTrue(card.Rank== "Q");
+                Assert.IsTrue(card.Colour== "H");
             }
         }
 
@@ -417,9 +417,9 @@ namespace TrainingTests
             Assert.IsTrue(rules.CardComparator() is StrictCardComparisonStrategy);
 
             // And those below come from our GuessACardGame
-            Assert.IsTrue(rules.GameActions()[0] is GuessCardAction);
-            Assert.IsTrue(rules.GameStopConditions()[0] is DidTurnsExpire);
-            Assert.IsTrue(rules.VictoryConditions()[0] is DidGuessACard);
+            Assert.IsTrue(rules.GameActions[0] is GuessCardAction);
+            Assert.IsTrue(rules.GameStopConditions[0] is DidTurnsExpire);
+            Assert.IsTrue(rules.VictoryConditions[0] is DidGuessACard);
         }
 
         [Test]
@@ -460,9 +460,9 @@ namespace TrainingTests
             Assert.IsTrue(rules.CardComparator() is BlackRedColourOnlyComparisonStrategy);
 
             // And those below come from our GuessACardGame
-            Assert.IsTrue(rules.GameActions()[0] is GuessCardAction);
-            Assert.IsTrue(rules.GameStopConditions()[0] is DidTurnsExpire);
-            Assert.IsTrue(rules.VictoryConditions()[0] is DidGuessACard);
+            Assert.IsTrue(rules.GameActions[0] is GuessCardAction);
+            Assert.IsTrue(rules.GameStopConditions[0] is DidTurnsExpire);
+            Assert.IsTrue(rules.VictoryConditions[0] is DidGuessACard);
         }
 
         [Test]
@@ -536,9 +536,9 @@ namespace TrainingTests
             PlayedGameRules referenceRules = new CreatePlayedGameRules().Empty();
 
             // Knowing that
-            Assert.IsTrue(referenceRules.GameActions().Count() == 0);
-            Assert.IsTrue(referenceRules.VictoryConditions().Count() == 0);
-            Assert.IsTrue(referenceRules.GameStopConditions().Count() == 0);
+            Assert.IsTrue(referenceRules.GameActions.Count() == 0);
+            Assert.IsTrue(referenceRules.VictoryConditions.Count() == 0);
+            Assert.IsTrue(referenceRules.GameStopConditions.Count() == 0);
             Assert.IsTrue(referenceRules.CardComparator() is AlwaysFailComparisonStrategy);
 
             // Given the change
@@ -548,10 +548,10 @@ namespace TrainingTests
             PlayedGameRules actualRules = new CreatePlayedGameRules().WithModifications(gameName, null, null, null, null);
 
             // Then
-            Assert.IsTrue(actualRules.GameName() == gameName);
-            Assert.IsTrue(actualRules.GameActions().Count() == referenceRules.GameActions().Count());
-            Assert.IsTrue(actualRules.VictoryConditions().Count() == referenceRules.VictoryConditions().Count());
-            Assert.IsTrue(actualRules.GameStopConditions().Count() == referenceRules.GameStopConditions().Count());
+            Assert.IsTrue(actualRules.GameName== gameName);
+            Assert.IsTrue(actualRules.GameActions.Count() == referenceRules.GameActions.Count());
+            Assert.IsTrue(actualRules.VictoryConditions.Count() == referenceRules.VictoryConditions.Count());
+            Assert.IsTrue(actualRules.GameStopConditions.Count() == referenceRules.GameStopConditions.Count());
             Assert.IsTrue(actualRules.CardComparator() is AlwaysFailComparisonStrategy);
 
             // Given the changes
@@ -562,10 +562,10 @@ namespace TrainingTests
             actualRules = new CreatePlayedGameRules().WithModifications(null, actions, victories, null, null);
 
             // Then
-            Assert.IsTrue(actualRules.GameName() == referenceRules.GameName());
-            Assert.IsTrue(actualRules.GameActions()[0] is GuessCardAction);
-            Assert.IsTrue(actualRules.VictoryConditions()[0] is DidGuessACard);
-            Assert.IsTrue(actualRules.GameStopConditions().Count() == referenceRules.GameStopConditions().Count());
+            Assert.IsTrue(actualRules.GameName== referenceRules.GameName);
+            Assert.IsTrue(actualRules.GameActions[0] is GuessCardAction);
+            Assert.IsTrue(actualRules.VictoryConditions[0] is DidGuessACard);
+            Assert.IsTrue(actualRules.GameStopConditions.Count() == referenceRules.GameStopConditions.Count());
             Assert.IsTrue(actualRules.CardComparator() is AlwaysFailComparisonStrategy);
 
         }

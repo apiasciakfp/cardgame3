@@ -19,8 +19,8 @@ namespace Core.Usecases.CardComparison
                 {"S", "black" }
             };
 
-            string card1Colour = colourMap[card1.Colour()];
-            string card2Colour = colourMap[card2.Colour()];
+            string card1Colour = colourMap[card1.Colour];
+            string card2Colour = colourMap[card2.Colour];
 
             if (card1Colour == card2Colour)
             {

@@ -44,5 +44,11 @@ namespace Core.Entities.Decks
             _cards.Add(card);
         }
 
+
+        public override string ToString()
+        {
+            var cardFaces = _cards.Select(c => c.ToString()).Aggregate("", (acc, prm) => acc + "||" + prm);
+            return $"Deck: {cardFaces}";
+        }
     }
 }
