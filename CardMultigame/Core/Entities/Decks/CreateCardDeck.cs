@@ -37,6 +37,25 @@ namespace Core.Entities.Decks
             return new CardDeck(_selectedCardSelector, cards);
         }
 
+        public CardDeck Simple9ToKWith4Colours()
+        {
+            List<string> ranks = new List<string>() { "9", "10", "J", "Q", "K"};
+            List<string> colours = new List<string>() { "S", "H", "D", "C" };
+
+            List<Card> cards = new List<Card>();
+            foreach (var rank in ranks)
+            {
+                foreach (var colour in colours)
+                {
+                    string cardPrototype = rank + colour;
+                    Card card = new CreateCards().CreateSingle(cardPrototype);
+                    cards.Add(card);
+                }
+            }
+
+            return new CardDeck(_selectedCardSelector, cards);
+        }
+
         public CardDeck Simple2ToAWith4Colours()
         {
             List<string> ranks = new List<string>() { "2", "3", "4", "5", "6", "7", "8",

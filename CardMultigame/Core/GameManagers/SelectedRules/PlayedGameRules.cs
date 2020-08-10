@@ -8,6 +8,7 @@ using Core.Entities.GameStates;
 using Core.Usecases.GameActions;
 using Core.Usecases.GameConditions;
 using Core.Usecases.CardComparison;
+using Core.Usecases.PointCalculators;
 
 namespace Core.Containers.GameRules
 {
@@ -18,21 +19,22 @@ namespace Core.Containers.GameRules
         private List<IGameCondition> _victoryConditions;
         private List<IGameCondition> _gameStopConditions;
         private ICardComparisonStrategy _cardComparator;
+        private ICardPointCalculator _pointCalculator;
 
         public PlayedGameRules(string gameName, List<IGameAction> actions, List<IGameCondition> victories, 
-            List<IGameCondition> gameStops, ICardComparisonStrategy compareCards)
+            List<IGameCondition> gameStops, ICardComparisonStrategy compareCards, ICardPointCalculator selectedPointCalculator)
         {
             _gameName = gameName;
             _actions = actions;
             _victoryConditions = victories;
             _gameStopConditions = gameStops;
             _cardComparator = compareCards;
+            _pointCalculator = selectedPointCalculator;
         }
 
-        public ICardComparisonStrategy CardComparator()
-        {
-            return _cardComparator;
-        }
+        public ICardComparisonStrategy CardComparator() { return _cardComparator; }
+
+        public ICardPointCalculator CardPointCalculator() { return _pointCalculator; }
 
         // Usually those three would remain private.
         // But tests for patterns kind of need it.

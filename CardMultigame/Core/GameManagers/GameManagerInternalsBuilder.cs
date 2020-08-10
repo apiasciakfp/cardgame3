@@ -5,6 +5,8 @@ using Core.Usecases.GameConditions;
 using Core.Entities.GameStates;
 using Core.Usecases.CardComparison;
 using Core.GameManagers.SelectedRules;
+using Core.Usecases.PointCalculators;
+using System;
 
 namespace Core.Containers.GameRules
 {
@@ -19,11 +21,11 @@ namespace Core.Containers.GameRules
 
         //This one is specific to Guessing Game.
         private ICardComparisonStrategy _compareCards;
-
+        private ICardPointCalculator _calculatePoints;
 
         public PlayedGameRules ConstructRuleset()
         {
-            return new CreatePlayedGameRules().WithModifications(_gameName, _actions, _victories, _gameStops, _compareCards);
+            return new CreatePlayedGameRules().WithModifications(_gameName, _actions, _victories, _gameStops, _compareCards, _calculatePoints);
         }
         
         public GameState ConstructGameState()
@@ -31,8 +33,8 @@ namespace Core.Containers.GameRules
             return new CreateGameState().WithModifications(_initialGameState, _deck);
         }
 
-
         public void SetName(string name) { _gameName = name; }
+
         public void SetAvailableActions(List<IGameAction> actions) { _actions = actions; }
         public void SetVictoryConditions(List<IGameCondition> victories) { _victories = victories; }
         public void SetGameStopConditions(List<IGameCondition> gameStops) { _gameStops = gameStops; }
@@ -45,6 +47,6 @@ namespace Core.Containers.GameRules
 
         // Specific to Guessing Game. Should be more general, like with InternalState
         public void SetCardComparisonStrategy(ICardComparisonStrategy selected) { _compareCards = selected; }
-
+        public void SetCardPointCalculator(ICardPointCalculator selected) { _calculatePoints = selected;}
     }
 }

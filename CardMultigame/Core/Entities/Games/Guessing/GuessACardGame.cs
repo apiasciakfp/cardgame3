@@ -5,6 +5,7 @@ using Core.Usecases.GameActions;
 using Core.Usecases.GameConditions;
 using Core.Entities.GameStates;
 using Core.Usecases.CardComparison;
+using Core.Usecases.PointCalculators;
 
 namespace Core.Entities.Games
 {
@@ -46,6 +47,12 @@ namespace Core.Entities.Games
         public ICardComparisonStrategy CardComparisonStrategy()
         {
             return new StrictCardComparisonStrategy();
+        }
+
+        public ICardPointCalculator CardPointCalculator()
+        {
+            // I dislike this immensely. Would be nice to refactor.
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Entities.GameStates;
 using Core.Usecases.CardComparison;
+using Core.Usecases.PointCalculators;
 
 namespace Core.Entities.Games.Guessing
 {
@@ -20,5 +21,6 @@ namespace Core.Entities.Games.Guessing
         List<IGameCondition> GameStopConditions();
         GameState InitialGameState();
         ICardComparisonStrategy CardComparisonStrategy();
+        ICardPointCalculator CardPointCalculator();
     }
 }

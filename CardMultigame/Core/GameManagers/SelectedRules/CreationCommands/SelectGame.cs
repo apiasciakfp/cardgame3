@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Core.Usecases.GameActions;
 using Core.Entities.Games.Guessing;
 using Core.Entities.Games;
+using Core.Entities.Games.Blackjacks;
 
 namespace Core.Containers.GameRules.CreationCommands
 {
@@ -24,6 +25,7 @@ namespace Core.Containers.GameRules.CreationCommands
             builder.SetGameStopConditions(gameImpl.GameStopConditions());
             builder.SetInitialGameState(gameImpl.InitialGameState());
             builder.SetCardComparisonStrategy(gameImpl.CardComparisonStrategy());
+            builder.SetCardPointCalculator(gameImpl.CardPointCalculator());
         }
 
         public bool ShouldReactTo(string outerCommandName)
@@ -38,6 +40,10 @@ namespace Core.Containers.GameRules.CreationCommands
             if (parameters.ToLower() == "GuessACard".ToLower())
             {
                 gameImpl = new GuessACardGame();
+            }
+            if (parameters.ToLower() == "Blackjack".ToLower())
+            {
+                gameImpl = new BlackjackGame();
             }
 
             if (gameImpl == null) throw new ArgumentException("Either the game is not registered in factory or game identifier has a typo. Got: " + parameters);
