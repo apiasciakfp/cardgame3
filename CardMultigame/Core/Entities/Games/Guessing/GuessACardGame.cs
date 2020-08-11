@@ -52,7 +52,7 @@ namespace Core.Entities.Games
         public ICardPointCalculator CardPointCalculator()
         {
             // I dislike this immensely. Would be nice to refactor.
-            throw new System.NotImplementedException();
+            return new DefaultBlackjackPointCalculator();
         }
     }
 }

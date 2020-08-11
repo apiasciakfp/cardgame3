@@ -545,7 +545,7 @@ namespace TrainingTests
             string gameName = "Random game";
 
             // When
-            PlayedGameRules actualRules = new CreatePlayedGameRules().WithModifications(gameName, null, null, null, null);
+            PlayedGameRules actualRules = new CreatePlayedGameRules().WithModifications(gameName, null, null, null, null, null);
 
             // Then
             Assert.IsTrue(actualRules.GameName== gameName);
@@ -559,7 +559,7 @@ namespace TrainingTests
             var victories = new List<IGameCondition>() { new DidGuessACard() };
 
             // When
-            actualRules = new CreatePlayedGameRules().WithModifications(null, actions, victories, null, null);
+            actualRules = new CreatePlayedGameRules().WithModifications(null, actions, victories, null, null, null);
 
             // Then
             Assert.IsTrue(actualRules.GameName== referenceRules.GameName);
