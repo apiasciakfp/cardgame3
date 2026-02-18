@@ -293,3 +293,11 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+dependency-reduced-pom.xml
