@@ -5,7 +5,7 @@ A card guessing game where you try to match a randomly drawn card from the deck.
 ## How to Run
 
 ```bash
-_sdk/java/java-sdk.sh --project _applications/card-multigame/CardMultigame-Java run
+mvn compile exec:java
 ```
 
 ## REPL Commands
@@ -79,7 +79,7 @@ Commands are separated by ONE type of separator. The parser picks whichever sepa
 ## Tests
 
 ```bash
-_sdk/java/java-sdk.sh --project _applications/card-multigame/CardMultigame-Java test
+mvn test
 ```
 
 `TestEndToEnd.fullScenario_setup_miss_hit_victory_thenGameIgnoresCommands` walks through a complete game step by step with assertions after every command: setup (3-card deck, 3 max turns) → Turn 1 miss (guessed 2C, drew JH) → Turn 2 hit (guessed QH, drew QH → Victory) → Turn 3 ignored (game already finished). Uses `AlwaysFirstSelector` for deterministic draws.
