@@ -294,6 +294,9 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
+# TypeScript build output
+dist/
+
 # Java / Maven
 target/
 *.class
