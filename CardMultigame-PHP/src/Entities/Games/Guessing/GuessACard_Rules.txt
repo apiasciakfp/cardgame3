@@ -1,0 +1,7 @@
+Cards: 
+	Standard: 9-A, 4 colours (24 distinct cards)
+	Optional: 9-A, 2 colours (12 distinct cards)
+Turns: 5
+
+Victory: Player guesses at least once.
+Failure: Player guesses 0 times.

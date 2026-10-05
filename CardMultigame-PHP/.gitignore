@@ -1,0 +1,4 @@
+/vendor/
+/.phpunit.cache/
+# The repo-root .gitignore ignores [Bb]in/ (a .NET rule); this bin/ holds the REPL entry point.
+!/bin/

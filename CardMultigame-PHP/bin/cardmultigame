@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+require __DIR__ . '/../vendor/autoload.php';
+
+use CardMultigame\Interface\UiLogicDispatcher;
+use CardMultigame\Technical\DotnetConsole;
+use CardMultigame\Technical\DotnetString;
+use CardMultigame\Technical\PhpErrorsAsExceptions;
+
+// Crash text goes to stderr only, as .NET's unhandled-exception report does (php.ini-independent).
+ini_set('display_errors', 'stderr');
+ini_set('log_errors', '0');
+PhpErrorsAsExceptions::install();
+
+$dispatcher = new UiLogicDispatcher();
+$builder = '';
+
+while (true) {
+    DotnetConsole::writeLine("Please, input the command with proper separators\n");
+
+    $orders = DotnetConsole::readLine();
+    $builder .= DotnetString::trim($orders);
+
+    if (str_contains($orders, 'SETUP')) {
+        $actualOrders = $builder;
+        $builder = '';
+        $dispatcher->setupGame($actualOrders);
+    } elseif (str_contains($orders, 'EXIT')) {
+        break;
+    } else {
+        $dispatcher->doStuff($orders);
+    }
+
+    DotnetConsole::write($dispatcher->displayCurrentState() . PHP_EOL . PHP_EOL);
+}
